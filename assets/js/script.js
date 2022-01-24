@@ -80,7 +80,15 @@ var createTaskEl = function(taskDataObj) {
     listItemEl.appendChild(taskActionsEl);
     
     // add entire list item to list
-    tasksToDoEl.appendChild(listItemEl);
+    if (taskDataObj.status === "to do") {
+        tasksToDoEl.appendChild(listItemEl);
+    } 
+    else if (taskDataObj.status === "in progress") {
+        tasksInProgressEl.appendChild(listItemEl);
+    }
+    else if (taskDataObj.status === "completed") {
+        tasksCompletedEl.appendChild(listItemEl);
+    }
 
     taskDataObj.id = taskIdCounter;
     tasks.push(taskDataObj);
